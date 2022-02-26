@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 4233969756
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0bcce12d5994ce54a3b68b09f4e05cfb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 12da798fbf3a6c0c342cc56cb1a6efdf
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Sample/SpriteSources/Blue.png
+- Assets/Sample/SpriteSources/Red.png
+- Assets/Sample/SpriteSources/Green.png
+Dependencies: []

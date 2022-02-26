@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
+using Newtonsoft.Json;
 
 public class AssetBundleBuilder {
 
@@ -33,8 +34,11 @@ public class AssetBundleBuilder {
 
             assetTable.AssetBundleInfos.Add(assetBundleInfo);
         }
-
-        Chenlin.SerializeUtil.XmlHelper.SerializeToFile(assetTable, CreateAssetBundlePathIfNotExist()+"AssetTable.xml");
+        JsonSerializer serializer = new JsonSerializer();
+        using (StreamWriter sw = new StreamWriter(CreateAssetBundlePathIfNotExist() + "AssetTable.json"))
+        {
+            serializer.Serialize(sw, assetTable);
+        }
         AssetDatabase.Refresh();
     }
 
@@ -69,8 +73,6 @@ public class AssetBundleBuilder {
         string fileName;
         int dotPos = path.LastIndexOf('.');
         int slashPos = path.LastIndexOf('/');
-        Debug.Log("dotPos:" + dotPos);
-        Debug.Log("slashPos:" + slashPos);
         fileName = path.Substring(slashPos+1, dotPos - slashPos-1);
         return fileName;
     }

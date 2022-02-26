@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 [Serializable]
 public class AssetTable {
@@ -12,7 +13,7 @@ public class AssetTable {
 
     public static void Load()
     {
-        foreach (var operation in Load(Application.streamingAssetsPath + "/AssetBundles/AssetTable.xml")) ;
+        foreach (var operation in Load(Application.streamingAssetsPath + "/AssetBundles/AssetTable.json")) ;
     }
 
     public static IEnumerable Load(string path)
@@ -21,8 +22,10 @@ public class AssetTable {
         yield return www;
         if (www.error != null)
             Debug.LogError(www.error);
-        else
-            instance = Chenlin.SerializeUtil.XmlHelper.Deserialize<AssetTable>(www.text);
+        else 
+        {
+            instance = JsonConvert.DeserializeObject<AssetTable>(www.text);
+        }
 
         www.Dispose();
 
