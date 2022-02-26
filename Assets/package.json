@@ -1,14 +1,14 @@
 {
-    "name": "com.Potro.ResKit",
+    "name": "com.potro.reskit",
     "version": "0.0.1",
     "displayName": "ResKit",
     "description": "My ResKit",
 	"dependencies": 
 	{
 		
-	}
+	},
     "author": {
-        "name": "Potro",
+        "name": "PotroChen",
         "email": "1400539511@qq.com"
     }
 }
