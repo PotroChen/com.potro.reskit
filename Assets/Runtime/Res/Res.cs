@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameFrameWork.ResKit
+namespace GameFramework.ResKit
 {
     /// <summary>
     /// 职责：资源的抽象

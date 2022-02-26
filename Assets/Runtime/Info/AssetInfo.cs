@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameFrameWork.ResKit
+namespace GameFramework.ResKit
 {
     [Serializable]
     public class AssetInfo

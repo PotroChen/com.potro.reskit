@@ -2,9 +2,9 @@
 using UnityEditor;
 using System.IO;
 using Newtonsoft.Json;
-using GameFrameWork.ResKit;
+using GameFramework.ResKit;
 
-namespace GameFrameWork.ResKit.Editor
+namespace GameFramework.ResKit.Editor
 {
     public class AssetBundleBuilder
     {

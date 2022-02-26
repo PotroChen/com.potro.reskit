@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameFrameWork.ResKit
+namespace GameFramework.ResKit
 {
     [Serializable]
     public class AssetBundleInfo

@@ -1,0 +1,16 @@
+{
+    "name": "com.potro.reskit.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:50665ef3a17663f4bb1a9724780b2ad8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

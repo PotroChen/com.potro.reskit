@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameFrameWork.ResKit
+namespace GameFramework.ResKit
 {
     public class AssetRes : Res
     {

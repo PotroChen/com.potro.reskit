@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameFrameWork.ResKit
+namespace GameFramework.ResKit
 {
     public class ResMgr
     {

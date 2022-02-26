@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameFrameWork.ResKit;
+using GameFramework.ResKit;
 public class ResourceTest : MonoBehaviour {
 
     ResLoader resLoader = new ResLoader();

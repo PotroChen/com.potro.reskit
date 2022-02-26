@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace GameFrameWork.ResKit
+namespace GameFramework.ResKit
 {
     [Serializable]
     public class AssetTable
