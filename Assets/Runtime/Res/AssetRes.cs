@@ -1,38 +1,43 @@
 ﻿using UnityEngine;
 
-public class AssetRes : Res {
-
-    private string assetBundleName;
-    private AssetBundleRes assetBundleRes;
-
-    public AssetRes(string assetName,string assetBundleName) : base(assetName)
+namespace GameFrameWork.ResKit
+{
+    public class AssetRes : Res
     {
-        this.assetBundleName = assetBundleName ?? AssetTable.Instance.GetAssetBundleName(assetName);
-    }
 
+        private string assetBundleName;
+        private AssetBundleRes assetBundleRes;
 
-    public override void Load()
-    {
-        base.Load();
-        if(assetBundleRes == null)
-            assetBundleRes = ResMgr.GetAssetBundleRes(Application.streamingAssetsPath + "/AssetBundles/"+assetBundleName);
-        asset = (assetBundleRes.Asset as AssetBundle).LoadAsset(Name);
-        if (asset == null)
-            Debug.LogErrorFormat("AssetBundle{0} do not contain asset{1}", assetBundleRes, asset);
-    }
-
-    protected override void UnLoad()
-    {
-        base.UnLoad();
-        if (asset is GameObject)
+        public AssetRes(string assetName, string assetBundleName) : base(assetName)
         {
-            
+            this.assetBundleName = assetBundleName ?? AssetTable.Instance.GetAssetBundleName(assetName);
         }
-        else
+
+
+        public override void Load()
         {
-            Resources.UnloadAsset(asset);
+            base.Load();
+            if (assetBundleRes == null)
+                assetBundleRes = ResMgr.GetAssetBundleRes(Application.streamingAssetsPath + "/AssetBundles/" + assetBundleName);
+            asset = (assetBundleRes.Asset as AssetBundle).LoadAsset(Name);
+            if (asset == null)
+                Debug.LogErrorFormat("AssetBundle{0} do not contain asset{1}", assetBundleRes, asset);
         }
-        assetBundleRes.Release();
+
+        protected override void UnLoad()
+        {
+            base.UnLoad();
+            if (asset is GameObject)
+            {
+
+            }
+            else
+            {
+                Resources.UnloadAsset(asset);
+            }
+            assetBundleRes.Release();
+        }
+
     }
 
 }

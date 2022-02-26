@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceRes : Res
+namespace GameFrameWork.ResKit
 {
-    public ResourceRes(string asset) : base(asset)
+    public class ResourceRes : Res
     {
-
-    }
-
-    public override void Load()
-    {
-        base.Load();
-        asset = Resources.Load(Name.Substring("resources://".Length));
-    }
-
-    protected override void UnLoad()
-    {
-        base.UnLoad();
-        if (asset is GameObject)//Resources不能UnLoad GameObject AssetBundle等类型（一般assetBundle一般也不会放在Resources里面）
+        public ResourceRes(string asset) : base(asset)
         {
-        }
-        else
-            Resources.UnloadAsset(asset);
-    }
 
+        }
+
+        public override void Load()
+        {
+            base.Load();
+            asset = Resources.Load(Name.Substring("resources://".Length));
+        }
+
+        protected override void UnLoad()
+        {
+            base.UnLoad();
+            if (asset is GameObject)//Resources不能UnLoad GameObject AssetBundle等类型（一般assetBundle一般也不会放在Resources里面）
+            {
+            }
+            else
+                Resources.UnloadAsset(asset);
+        }
+    }
 
 }
