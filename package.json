@@ -1,14 +1,13 @@
 {
-    "name": "com.potro.reskit",
-    "version": "0.0.1",
-    "displayName": "ResKit",
-    "description": "My ResKit",
-	"dependencies": 
-	{
-		
-	},
-    "author": {
-        "name": "PotroChen",
-        "email": "1400539511@qq.com"
-    }
+  "name": "com.potro.reskit",
+  "version": "0.0.1",
+  "displayName": "ResKit",
+  "description": "My ResKit",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  },
+  "author": {
+    "name": "PotroChen",
+    "email": "1400539511@qq.com"
+  }
 }
