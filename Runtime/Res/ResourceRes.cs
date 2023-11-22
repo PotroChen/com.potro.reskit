@@ -6,7 +6,7 @@ namespace GameFramework.ResKit
 {
     public class ResourceRes : Res
     {
-        public ResourceRes(string asset) : base(asset)
+        public ResourceRes(string path) : base(path)
         {
 
         }
@@ -14,7 +14,7 @@ namespace GameFramework.ResKit
         public override void Load()
         {
             base.Load();
-            asset = Resources.Load(Name.Substring("resources://".Length));
+            asset = Resources.Load(Path.Substring("resources://".Length));
         }
 
         protected override void UnLoad()

@@ -13,7 +13,7 @@ namespace GameFramework.ResKit
 
         public T LoadAsset<T>(string assetName, string assetBundleName = null) where T : Object
         {
-            Res loadedRes = resList.Find(loadedAsset => loadedAsset.Name == assetName);
+            Res loadedRes = resList.Find(loadedAsset => loadedAsset.Path == assetName);
 
             if (loadedRes != null)
             {

@@ -13,7 +13,7 @@ namespace GameFramework.ResKit
         public override void Load()
         {
             base.Load();
-            asset = AssetBundle.LoadFromFile(Name);
+            asset = AssetBundle.LoadFromFile(Path);
             if (asset == null)
                 Debug.LogErrorFormat("AssetBundle:{0} do not exists");
         }

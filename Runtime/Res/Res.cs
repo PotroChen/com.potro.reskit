@@ -7,15 +7,15 @@ namespace GameFramework.ResKit
     /// </summary>
     public class Res
     {
-        public string Name { get; private set; }
+        public string Path { get; private set; }
 
         protected Object asset;
 
         private int refCount;
 
-        public Res(string assetName)
+        public Res(string assetPath)
         {
-            Name = assetName;
+            Path = assetPath;
         }
 
         public void Retain()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace GameFramework.ResKit
 {
@@ -8,34 +9,46 @@ namespace GameFramework.ResKit
         private string assetBundleName;
         private AssetBundleRes assetBundleRes;
 
-        public AssetRes(string assetName, string assetBundleName) : base(assetName)
+        public AssetRes(string assetPath) : base(assetPath)
         {
-            this.assetBundleName = assetBundleName ?? AssetTable.Instance.GetAssetBundleName(assetName);
+            this.assetBundleName = assetBundleName ?? AssetTable.Instance.GetAssetBundleName(assetPath);
         }
 
 
         public override void Load()
         {
             base.Load();
-            if (assetBundleRes == null)
-                assetBundleRes = ResMgr.GetAssetBundleRes(Application.streamingAssetsPath + "/AssetBundles/" + assetBundleName);
-            asset = (assetBundleRes.Asset as AssetBundle).LoadAsset(Name);
-            if (asset == null)
-                Debug.LogErrorFormat("AssetBundle{0} do not contain asset{1}", assetBundleRes, asset);
+#if UNITY_EDITOR
+            if (ResMgr.simulateMode)
+            {
+                asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(Path);
+            }
+            else
+#endif
+            {
+                if (assetBundleRes == null)
+                    assetBundleRes = ResMgr.GetAssetBundleRes(Application.streamingAssetsPath + "/AssetBundles/" + assetBundleName);
+                asset = (assetBundleRes.Asset as AssetBundle).LoadAsset(Path);
+                if (asset == null)
+                    Debug.LogErrorFormat("AssetBundle{0} do not contain asset{1}", assetBundleRes, asset);
+            }
         }
 
         protected override void UnLoad()
         {
             base.UnLoad();
-            if (asset is GameObject)
+#if UNITY_EDITOR
+            if (ResMgr.simulateMode) 
             {
-
+                asset = null;
             }
             else
+#endif
             {
                 Resources.UnloadAsset(asset);
+                assetBundleRes.Release();
+                asset = null;
             }
-            assetBundleRes.Release();
         }
 
     }

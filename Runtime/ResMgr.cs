@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace GameFramework.ResKit
 {
     public class ResMgr
     {
-
+        public static bool simulateMode = false;
         /// <summary>
         /// 共享的资源
         /// </summary>
@@ -16,9 +17,9 @@ namespace GameFramework.ResKit
             AssetTable.Load();
         }
 
-        public static Res GetRes(string resName, string assetBundleName = null)
+        public static Res GetRes(string path)
         {
-            Res res = SharedLoadedReses.Find(loadedAsset => loadedAsset.Name == resName);
+            Res res = SharedLoadedReses.Find(loadedAsset => loadedAsset.Path == path);
 
             if (res != null)
             {
@@ -26,13 +27,13 @@ namespace GameFramework.ResKit
                 return res;
             }
 
-            if (resName.StartsWith("resources://"))
+            if (path.StartsWith("resources://"))
             {
-                res = new ResourceRes(resName);
+                res = new ResourceRes(path);
             }
             else
             {
-                res = new AssetRes(resName, assetBundleName);
+                res = new AssetRes(path);
             }
 
             res.Load();
@@ -42,9 +43,9 @@ namespace GameFramework.ResKit
             return res;
         }
 
-        public static AssetBundleRes GetAssetBundleRes(string assetName)
+        public static AssetBundleRes GetAssetBundleRes(string assetPath)
         {
-            Res res = SharedLoadedReses.Find(loadedAsset => loadedAsset.Name == assetName);
+            Res res = SharedLoadedReses.Find(loadedAsset => loadedAsset.Path == assetPath);
 
             if (res != null)
             {
@@ -52,7 +53,7 @@ namespace GameFramework.ResKit
                 return res as AssetBundleRes;
             }
 
-            res = new AssetBundleRes(assetName);
+            res = new AssetBundleRes(assetPath);
             res.Load();
             SharedLoadedReses.Add(res);
             res.Retain();
